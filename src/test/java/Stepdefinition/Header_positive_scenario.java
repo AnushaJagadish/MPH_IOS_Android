@@ -277,11 +277,16 @@ public class Header_positive_scenario extends Generic_functions{
 	@When("click on Log out icon")
 	public void click_logOut() throws Exception {
 		try {
+			if((platformName.equals("Android"))){
 				page_wait(5000);
 				click("logout");
+			}
+			else {
 				page_wait(4000);
 				click("hamburger");
 				click("logout");
+			}
+			
 		}
 		catch(Exception e){
 			e.printStackTrace();
