@@ -199,15 +199,14 @@ public class Award_points_negative_scenarios extends Generic_functions{
 //			scrolldown(text);
 //			value=driver.findElement(By.xpath(OR_reader("redeem_points"))).isEnabled();
 //			Assert.assertEquals(value,true);
-//			click("home");
-//			page_wait(5);
-//			click("hamburger");
-//			click("logout");
+		click("home");
+		page_wait(5000);
+		click("hamburger");
+		click("logout");
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 			takeScreenShot("Award_point_negative_tc_005");
 		}
-		close();
 	}
 }

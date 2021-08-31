@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Validate login negative functionality","Validate that the user should get a validation message on entering invalid credentials in the 'Login' Page","SUCCESS","2021-08-30T11:55:58.4214031+05:30[Asia/Calcutta]","0.0","0.23"
+"Validate login negative functionality","Validate that the user is not allowed to login with invalid 'Phone number' and valid 'Password'","SUCCESS","2021-08-30T11:55:58.6633844+05:30[Asia/Calcutta]","0.0","0.24"
+"Validate login negative functionality","Validate that the user is not allowed to login with invalid Password and valid phone number","SUCCESS","2021-08-30T11:55:58.9097605+05:30[Asia/Calcutta]","0.0","0.26"

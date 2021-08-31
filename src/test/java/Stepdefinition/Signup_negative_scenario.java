@@ -230,7 +230,6 @@ public class Signup_negative_scenario extends Generic_functions{
 		try {
 			Assert.assertEquals(driver.findElement(By.xpath(OR_reader("signup_terms_and_conditions"))).isSelected(),false);
 			Assert.assertEquals(driver.findElement(By.xpath(OR_reader("signup"))).isEnabled(),true);
-			close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			takeScreenShot("signup_negative_check_box_unchecked");

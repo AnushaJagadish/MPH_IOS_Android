@@ -26,6 +26,7 @@ public class Landing_positive_scenarios extends Generic_functions{
 	public static void navigate_to_welcome_page() throws Exception {
 		try {
 			value= driver.findElement(By.xpath(OR_reader("mph_logo"))).isDisplayed();
+			System.out.println(value);
 			Assert.assertEquals(value,true);
 			text= driver.findElement(By.xpath(OR_reader( "welcome_page_title"))).getText();
 			Assert.assertEquals(text,td_reader("welcome_page_title"));		
@@ -85,7 +86,6 @@ public class Landing_positive_scenarios extends Generic_functions{
 		try {
 			text= driver.findElement(By.xpath(OR_reader( "login_page_title"))).getText();
 			Assert.assertEquals(text,td_reader("login_page_title"));
-			close();
 		}catch(Exception e) {
 			e.printStackTrace();
 			takeScreenShot("landing_positive_navigate_to_login_page");

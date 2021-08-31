@@ -163,7 +163,6 @@ public class Second_opinion_dashboard_positive_scenarios extends Generic_functio
             builder.moveToElement(driver.findElement(By.xpath(OR_reader("ServiceDashboardActivity_back")))).click().build().perform();
             click("hamburger");
             click("logout");
-            driver.quit();
         } catch (Exception e) {
             e.printStackTrace();
             takeScreenShot("second_opinion_positive_dashboard_tc_004");

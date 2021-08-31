@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Validation on Home Page","Validate that the user is able to Login with valid data","SUCCESS","2021-08-30T11:56:04.3887374+05:30[Asia/Calcutta]","0.0","0.01"
+"Validation on Home Page","Validate that the user is in Home page","SUCCESS","2021-08-30T11:56:04.4044997+05:30[Asia/Calcutta]","0.0","0.14"
+"Validation on Home Page","Validate that the user is navigated to the Second Opinion page on clicking 'Request for second opinion' button","SUCCESS","2021-08-30T11:56:04.5546785+05:30[Asia/Calcutta]","0.0","0.25"
+"Validation on Home Page","Validate that the user is navigated to the  Refer a friend page on clicking 'Refer a friend' button","SUCCESS","2021-08-30T11:56:04.8115797+05:30[Asia/Calcutta]","0.0","2.26"

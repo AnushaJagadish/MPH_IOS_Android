@@ -242,7 +242,6 @@ public class Utilities_positive_scenarios extends Generic_functions {
 			page_wait(3000);
 			click("hamburger");
 			click("logout");
-			close();
 		}catch (Exception e) {
 			e.printStackTrace();
 			takeScreenShot("utilities_positive_tc_005");

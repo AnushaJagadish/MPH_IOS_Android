@@ -297,7 +297,7 @@ public class Header_positive_scenario extends Generic_functions{
 	public void verify_landing_page() throws Exception {
 		value=driver.findElement(By.xpath(OR_reader("welcome_page_title"))).isDisplayed();
 		Assert.assertEquals(true,value);
-		close();
+		//close();
 		
 	}
 }

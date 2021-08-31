@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Validate Second Opinion Dashboard","Validate that the user is able to login with valid credentials","SUCCESS","2021-08-30T11:56:07.0739195+05:30[Asia/Calcutta]","0.0","0.25"
+"Validate Second Opinion Dashboard","Validate that the user is able to click on the Second Opinion tab","SUCCESS","2021-08-30T11:56:07.3281252+05:30[Asia/Calcutta]","0.0","0.28"
+"Validate Second Opinion Dashboard","Validate that User is able to click on Requested tab","SUCCESS","2021-08-30T11:56:07.7342254+05:30[Asia/Calcutta]","0.0","0.26"
+"Validate Second Opinion Dashboard","Validate that User is able to click on Reviewed tab","SUCCESS","2021-08-30T11:56:07.997174+05:30[Asia/Calcutta]","0.0","0.26"

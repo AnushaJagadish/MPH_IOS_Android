@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Validation on Award Points Page","Validate navigation to award points page","SUCCESS","2021-08-30T11:56:02.5599411+05:30[Asia/Calcutta]","0.0","0.49"
+"Validation on Award Points Page","Verify the validation message on entering amount more than the available amount in ""Redeem Award Points"" page","SUCCESS","2021-08-30T11:56:03.0613238+05:30[Asia/Calcutta]","0.0","0.36"
+"Validation on Award Points Page","Validate the validation message on entering amount less than the available amount in ""Redeem Award Points"" page","SUCCESS","2021-08-30T11:56:03.425842+05:30[Asia/Calcutta]","0.0","0.23"
+"Validation on Award Points Page","Unable to click on the 'Redeem' button on leaving the field 'Select a gift card' blank""","SUCCESS","2021-08-30T11:56:03.6625722+05:30[Asia/Calcutta]","0.0","0.01"

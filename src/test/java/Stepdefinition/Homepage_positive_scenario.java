@@ -143,7 +143,7 @@ public class Homepage_positive_scenario extends Generic_functions {
 			click("hamburger");
 			page_wait(2000);
 			click("logout");
-			close();
+			//close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			takeScreenShot("home_positive_navigated_to_refer_a_friend_page");

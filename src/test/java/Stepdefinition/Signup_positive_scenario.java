@@ -221,7 +221,6 @@ public class Signup_positive_scenario extends Generic_functions{
 			page_wait(1000);
 			value1=driver.findElement(By.xpath(OR_reader( "welcome_page_title"))).isDisplayed();
 			Assert.assertEquals(true,value1);
-			close();
 		}catch(Exception e) {
 			e.printStackTrace();
 			takeScreenShot("signup_positive_click_verify");

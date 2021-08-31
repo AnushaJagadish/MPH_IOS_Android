@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Validation on Landing page","Validate that the user is navigated to Welcome page","SUCCESS","2021-08-30T11:55:53.2830496+05:30[Asia/Calcutta]","0.0","0.73"
+"Validation on Landing page","Validate user is able to click on 'Sign Up' button and navigate to Sign Up page","SUCCESS","2021-08-30T11:55:54.04431+05:30[Asia/Calcutta]","0.0","0.25"
+"Validation on Landing page","Validate user is able to click on 'Login' button and navigate to Login page","SUCCESS","2021-08-30T11:55:54.3169631+05:30[Asia/Calcutta]","0.0","0.33"

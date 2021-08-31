@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"User must click on the Award Point and navigated to the Reddemed award points page","Validate navigation to utility page","SUCCESS","2021-08-30T11:56:03.7004729+05:30[Asia/Calcutta]","0.0","0.25"
+"User must click on the Award Point and navigated to the Reddemed award points page","Validate Tile ""Award Points""in the Utilities dashboard","SUCCESS","2021-08-30T11:56:03.9578165+05:30[Asia/Calcutta]","0.0","0.23"
+"User must click on the Award Point and navigated to the Reddemed award points page","Validate the Redeem points  in the Award points dashboard.","SUCCESS","2021-08-30T11:56:04.1939778+05:30[Asia/Calcutta]","0.0","0.15"
+"User must click on the Award Point and navigated to the Reddemed award points page","Validate the navigation to the redeemed page","SUCCESS","2021-08-30T11:56:04.3476505+05:30[Asia/Calcutta]","0.0","0.01"

@@ -259,13 +259,13 @@ public class Utilities_negative_scenario extends Generic_functions{
 //            value=driver.findElement(By.xpath(OR_reader("utilities_ok_button"))).isDisplayed();
 //            Assert.assertEquals(true,value);
 //            click("utilities_ok_button");
-//            logout();
+           logout();
         }catch (Exception e){e.printStackTrace();
             takeScreenShot("TC007_verify_upload");}
     }
 
     private void logout() throws Exception {
-//        click("hamburger");
-//        click("logout");
+       click("hamburger");
+       click("logout");
     }
 }

@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Validation on Utilities page negative test cases","Navigate to Utilities screen","SUCCESS","2021-08-30T11:56:01.6479833+05:30[Asia/Calcutta]","0.0","0.24"
+"Validation on Utilities page negative test cases","Verify that click on all the Tiles in the Utilities dashboard","SUCCESS","2021-08-30T11:56:01.8980751+05:30[Asia/Calcutta]","0.0","0.24"
+"Validation on Utilities page negative test cases","Add bank details  in the Wallet dashboard","SUCCESS","2021-08-30T11:56:02.1689892+05:30[Asia/Calcutta]","0.0","0.23"
+"Validation on Utilities page negative test cases","Check deactivate tab","SUCCESS","2021-08-30T11:56:02.4114417+05:30[Asia/Calcutta]","0.0","0.14"

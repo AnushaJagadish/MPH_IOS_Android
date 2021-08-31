@@ -1,0 +1,8 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"User should be able to click on the Utilities tab and able to use all the services under Utilities","Validate the navigation to Utilities screen","SUCCESS","2021-08-30T11:56:08.2682342+05:30[Asia/Calcutta]","0.0","0.24"
+"User should be able to click on the Utilities tab and able to use all the services under Utilities","Validate the message on leaving fields blank in the Add Card page","SUCCESS","2021-08-30T11:56:08.5129782+05:30[Asia/Calcutta]","0.0","0.37"
+"User should be able to click on the Utilities tab and able to use all the services under Utilities","Validate the message on entering invalid details in the Add Card page","SUCCESS","2021-08-30T11:56:08.8871484+05:30[Asia/Calcutta]","0.0","0.36"
+"User should be able to click on the Utilities tab and able to use all the services under Utilities","Validate message on leaving fields blank in the Add Bank page","SUCCESS","2021-08-30T11:56:09.2527625+05:30[Asia/Calcutta]","0.0","0.36"
+"User should be able to click on the Utilities tab and able to use all the services under Utilities","Validate award points page","SUCCESS","2021-08-30T11:56:09.6319152+05:30[Asia/Calcutta]","0.0","0.01"
+"User should be able to click on the Utilities tab and able to use all the services under Utilities","Validate ID card","SUCCESS","2021-08-30T11:56:09.646875+05:30[Asia/Calcutta]","0.0","0.15"
+"User should be able to click on the Utilities tab and able to use all the services under Utilities","Validate Upload","SUCCESS","2021-08-30T11:56:09.7986975+05:30[Asia/Calcutta]","0.0","0.01"

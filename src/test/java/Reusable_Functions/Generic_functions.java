@@ -11,41 +11,30 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
 import javax.imageio.ImageIO;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.IOSMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import io.testproject.sdk.drivers.ios.IOSDriver;
 import io.testproject.sdk.internal.exceptions.AgentConnectException;
 import io.testproject.sdk.internal.exceptions.InvalidTokenException;
@@ -75,15 +64,14 @@ public class Generic_functions {
 		prop.load(fileInput);
 		platformName=getPlatformName();
 		if (platformName.equals("iOS")) {
-			driver.launchApp();
+			//driver.launchApp();
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 	        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
 	        capabilities.setCapability(MobileCapabilityType.UDID, get_IOSUDID());
 	        capabilities.setCapability(IOSMobileCapabilityType.BUNDLE_ID, getBundleId());
 	        driver = new IOSDriver<>(getToken(),capabilities,"https://localhost:8585");
-	       // driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
-
 			page_wait(5000);
+			driver.resetApp();
 		}	
 		else if (platformName.equals("Android")) {
 			DesiredCapabilities cap= new DesiredCapabilities();
@@ -94,7 +82,9 @@ public class Generic_functions {
 			cap.setCapability("appPackage", getAppPackage());
 			cap.setCapability("appActivity", getAppActivity());
 			URL url = new URL(getURL());
-			driver= new AndroidDriver<AndroidElement>(url,cap);			
+			driver= new AndroidDriver<>(url,cap);
+			page_wait(5000);
+			driver.resetApp();
 		}
 	}
 	/* Function will fetch the platform from the config.properties file*/
@@ -270,11 +260,7 @@ public class Generic_functions {
 	
 	/*close the application*/
 	public static void close() {
-		if(platformName.equals("Android")){
-		driver.closeApp();}
-		else {
-
-		}
+		driver.closeApp();
 	}
 	
 	 /*  Taking Screenshot of failed test cases  */

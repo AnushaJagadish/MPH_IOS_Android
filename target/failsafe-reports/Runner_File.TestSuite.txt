@@ -1,0 +1,94 @@
+-------------------------------------------------------------------------------
+Test set: Runner_File.TestSuite
+-------------------------------------------------------------------------------
+Tests run: 75, Failures: 0, Errors: 27, Skipped: 0, Time elapsed: 20.015 s <<< FAILURE! - in Runner_File.TestSuite
+Validation on Sign Up Page negative test case.Verify the scenario when entered invalid firstname and lastname  Time elapsed: 0.378 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validation on Sign Up Page negative test case.Verify the scenario when entered invalid 'Email ID'  Time elapsed: 0.188 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validation on Sign Up Page negative test case.Verify the scenario when blank 'Email ID' field  Time elapsed: 0.17 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validation on Sign Up Page negative test case.Verify the scenario when entering less than 10 digits in the 'Phone number' field  Time elapsed: 0.149 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validation on Sign Up Page negative test case.Verify the scenario when entering more than 10 digits in 'Phone number' field  Time elapsed: 0.17 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validation on Sign Up Page negative test case.Verify the scenario when entering already registered phone number  Time elapsed: 0.149 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validation on Sign Up Page negative test case.Verify the scenario when blank 'Password' field  Time elapsed: 0.18 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validation on Sign Up Page negative test case.Verify the scenario when password strength message and progress bar is displayed while entering password in 'Password' field  Time elapsed: 0.173 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validation on Sign Up Page negative test case.Verify the scenario when entering different data in 'Password' and 'Confirm Password'  Time elapsed: 0.151 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validation on Sign Up Page negative test case.Validate that the user should get a validation message on entering invalid referral code  Time elapsed: 0.142 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validation on Sign Up Positive test cases.Verify the scenario when navigate to the otp Login page  Time elapsed: 0.259 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'Click on verify button' is undefined.
+You can implement this step using the snippet(s) below:
+
+@Then("Click on verify button")
+public void click_on_verify_button() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Validate login negative functionality.Validate that the user is not allowed to login when Phone number and Password fields are blank  Time elapsed: 0.024 s  <<< ERROR!
+java.lang.NullPointerException
+
+Verify the header page positive scenarios.Validation of the Drop down tab  Time elapsed: 0.125 s  <<< ERROR!
+java.lang.NullPointerException
+
+Verify the header page positive scenarios.Validate profile page on clicking  Your profile tab  Time elapsed: 0.022 s  <<< ERROR!
+java.lang.NullPointerException
+
+Verify the header page positive scenarios.Validate  Your ratings dashboard  Time elapsed: 0.133 s  <<< ERROR!
+java.lang.NullPointerException
+
+Verify the header page positive scenarios.Validate the alerts page  Time elapsed: 0.143 s  <<< ERROR!
+java.lang.NullPointerException
+
+Verify the header page positive scenarios.Validate Help or FAQ  page  Time elapsed: 0.142 s  <<< ERROR!
+java.lang.NullPointerException
+
+Verify the header page positive scenarios.Validate  Privacy Policy dialogue box on clicking on the Privacy Policy  Time elapsed: 0.144 s  <<< ERROR!
+java.lang.NullPointerException
+
+Verify the header page positive scenarios.Validate Terms & Conditions dialogue box on clicking on the Terms & Conditions  Time elapsed: 0.018 s  <<< ERROR!
+java.lang.NullPointerException
+
+Verify the header page positive scenarios.Validate the Contact Us page  Time elapsed: 0.016 s  <<< ERROR!
+java.lang.NullPointerException
+
+Verify the header page positive scenarios.Validate that the user is navigated to the Feedback Port   page  on clicking Feedback  Time elapsed: 0.146 s  <<< ERROR!
+java.lang.NullPointerException
+
+Verify the header page positive scenarios.Validate the Landing page on clicking Log out icon  Time elapsed: 0.148 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validation on Utilities page negative test cases.Add card details  in the Wallet dashboard  Time elapsed: 0.025 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validation on Award Points Page.Unable to click on the 'Redeem' button on leaving the field 'Enter Amount' blank on "Redeem Award Points" page  Time elapsed: 0.019 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validation on Home Page.Validate that the user is navigated to Welcome page  Time elapsed: 0.022 s  <<< ERROR!
+java.lang.NullPointerException
+
+Validate Second Opinion Dashboard.Validate that the user is able to click on Resume Cases and is navigated to uplaod scans page  Time elapsed: 0.124 s  <<< ERROR!
+java.lang.IllegalArgumentException: Cannot find elements when the XPath is null.
+
+User should be able to click on the Utilities tab and able to use all the services under Utilities.Validate message on entering invalid details in the Add Bank page  Time elapsed: 0.016 s  <<< ERROR!
+java.lang.NullPointerException
+

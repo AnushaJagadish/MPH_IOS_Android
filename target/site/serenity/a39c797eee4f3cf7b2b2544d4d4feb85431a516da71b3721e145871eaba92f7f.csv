@@ -1,0 +1,7 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Validate login positive functionality","Validate that the 'Phone number' field is prefixed with +1 country code","SUCCESS","2021-08-30T11:55:59.1781007+05:30[Asia/Calcutta]","0.0","0.31"
+"Validate login positive functionality","Validate that the user is able to click on the 'Forgot password?' link","SUCCESS","2021-08-30T11:55:59.4924662+05:30[Asia/Calcutta]","0.0","0.01"
+"Validate login positive functionality","Validate that the user is able click on the 'Sign up' link","SUCCESS","2021-08-30T11:55:59.5084244+05:30[Asia/Calcutta]","0.0","0.01"
+"Validate login positive functionality","Validate that the user is able to enter  the password in the 'Password' field","SUCCESS","2021-08-30T11:55:59.5268942+05:30[Asia/Calcutta]","0.0","0.14"
+"Validate login positive functionality","Validate that the user is able to Login","SUCCESS","2021-08-30T11:55:59.6761369+05:30[Asia/Calcutta]","0.0","0.24"
+"Validate login positive functionality","Validate that the user is navigated to Landing page on clicking the Log out option","SUCCESS","2021-08-30T11:55:59.9237225+05:30[Asia/Calcutta]","0.0","0.26"

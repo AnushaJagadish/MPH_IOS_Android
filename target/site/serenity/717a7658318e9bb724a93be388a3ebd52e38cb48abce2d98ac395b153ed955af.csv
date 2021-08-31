@@ -1,0 +1,7 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Validation on Sign Up Positive test cases","Verify that the browser is lauched.Clicks on the Signup button and navigates to Signup page","SUCCESS","2021-08-30T11:55:56.9044838+05:30[Asia/Calcutta]","0.0","0.15"
+"Validation on Sign Up Positive test cases","Verify clicking on login link will navigate to login page","SUCCESS","2021-08-30T11:55:57.0592575+05:30[Asia/Calcutta]","0.0","0.26"
+"Validation on Sign Up Positive test cases","Verify that the data entered in both Password and Confirm password fields are masked","SUCCESS","2021-08-30T11:55:57.3250025+05:30[Asia/Calcutta]","0.0","0.12"
+"Validation on Sign Up Positive test cases","Verify that the password should be displayed on an eye click for Password fields","SUCCESS","2021-08-30T11:55:57.45968+05:30[Asia/Calcutta]","0.0","0.26"
+"Validation on Sign Up Positive test cases","Verify that the Confirm password field by comparing data entered in the Password field","SUCCESS","2021-08-30T11:55:57.7274623+05:30[Asia/Calcutta]","0.0","0.12"
+"Validation on Sign Up Positive test cases","Verify click on Sign Up with valid credentials","SUCCESS","2021-08-30T11:55:57.8601053+05:30[Asia/Calcutta]","0.0","0.27"

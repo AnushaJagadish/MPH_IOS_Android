@@ -160,7 +160,7 @@ public class Login_positive_scenario extends Generic_functions{
 			value = driver.findElement(By.xpath(OR_reader( "welcome_login"))).isDisplayed();
 			Assert.assertEquals(true,value);
 			page_wait(6000);
-			close();
+			//close();
 		} catch (Exception e) {
 			e.printStackTrace();	
 			takeScreenShot("login_positive_navigate_to_landingpage");

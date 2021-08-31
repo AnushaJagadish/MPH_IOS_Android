@@ -1,0 +1,2 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Validate login negative functionality","Validate that the user is not allowed to login when Phone number and Password fields are blank","ERROR","2021-08-30T11:55:58.3981041+05:30[Asia/Calcutta]","0.0","0.01"
