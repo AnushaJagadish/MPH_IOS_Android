@@ -163,7 +163,7 @@ public class Utilities_positive_scenarios extends Generic_functions {
 
 	/* TC_005 - Add bank details  in the Wallet dashboard*/
 	@Given("user is on add bank details page")
-	public void on_add_bank_details() throws Exception {
+	public static void on_add_bank_details() throws Exception {
 		try {
 			page_wait(4000);
 			click("utilities_plus_icon");
@@ -175,7 +175,7 @@ public class Utilities_positive_scenarios extends Generic_functions {
 		}
 	}
 	@When("Enter bank details in wallet dashboard")
-	public void bank_details() throws Exception {
+	public static void bank_details() throws Exception {
 		try {	
 			page_wait(2000);
 			value = driver.findElement(By.xpath(OR_reader("utilities_add_bank_title"))).isDisplayed();
@@ -242,6 +242,7 @@ public class Utilities_positive_scenarios extends Generic_functions {
 			page_wait(3000);
 			click("hamburger");
 			click("logout");
+			close();
 		}catch (Exception e) {
 			e.printStackTrace();
 			takeScreenShot("utilities_positive_tc_005");

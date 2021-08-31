@@ -12,14 +12,13 @@ public class Signup_negative_scenario extends Generic_functions{
 
 	/* TC_001 -Validate that the user should get a  validation message  on entering invalid 'first name' and 'last name' */
 	@Given("Launch  URL and click on signup")
-	public void app_launching() throws Exception {
+	public static void app_launching() throws Exception {
 		try {
 			app_launch();
 			page_wait(4000);
 			click("welcome_signup");
 		} catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("app_launching");
 		}
 	}	
 	@When("Enter invalid 'Firstname' and 'Lastname' details")
@@ -230,6 +229,7 @@ public class Signup_negative_scenario extends Generic_functions{
 		try {
 			Assert.assertEquals(driver.findElement(By.xpath(OR_reader("signup_terms_and_conditions"))).isSelected(),false);
 			Assert.assertEquals(driver.findElement(By.xpath(OR_reader("signup"))).isEnabled(),true);
+			close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			takeScreenShot("signup_negative_check_box_unchecked");

@@ -1,10 +1,7 @@
 package Stepdefinition;
 
-import java.io.IOException;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
-
 import Reusable_Functions.Generic_functions;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -36,8 +33,10 @@ public class Signup_positive_scenario extends Generic_functions{
 	@Then("Navigated to signup page")
 	public static void navigate_signup_page() throws Exception  {
 		try {
-			value1=driver.findElement(By.xpath(OR_reader("signup_page_title"))).isDisplayed();
-			Assert.assertEquals(true,value1);
+//			value1= driver.findElement(By.xpath(OR_reader("mph_logo"))).isDisplayed();
+//			Assert.assertEquals(value1,true);
+			str= driver.findElement(By.xpath(OR_reader( "signup_page_title"))).getText();
+			Assert.assertEquals(str,td_reader("signup_page_title"));			
 		} catch (Exception e) {
 			e.printStackTrace();	
 			takeScreenShot("signup_positive_navigate_signup_page");
@@ -48,9 +47,12 @@ public class Signup_positive_scenario extends Generic_functions{
 	@When("Clicks on the 'Login' link")
 	public static void click_on_login_link() throws Exception{
 		try{
-			click("login_link");
-			if((platformName.equals("iOS"))){
+			page_wait(3000);
+			click("login_link");	
+			if (platformName.equals("iOS")) {
+				page_wait(2000);						
 				click("continue");
+				page_wait(3000);
 			}			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -60,8 +62,10 @@ public class Signup_positive_scenario extends Generic_functions{
 	@Then("Navigates to the login page")
 	public static void navigate_to_login() throws Exception{
 		try{
-			value1=driver.findElement(By.xpath(OR_reader("login_phone_number"))).isDisplayed();
-			Assert.assertEquals(true,value1);
+			page_wait(6000);
+			// Xpath is different
+			str= driver.findElement(By.xpath(OR_reader("login_page_title"))).getText();
+//			Assert.assertEquals(str,td_reader("login_page_title"));
 			if((platformName.equals("iOS"))){
 				click("login_cancel_btn");
 			}
@@ -74,7 +78,7 @@ public class Signup_positive_scenario extends Generic_functions{
 	
 	/* TC_003 - Validate that the data entered in both Password and Confirm password fields are masked */
 	@When("Enter details in the 'Password' and 'Confirmed Password' field should be masked")
-	public void enter_password() throws Exception {
+	public static void enter_password() throws Exception {
 		try {		
 			click("signup_password");
 			driver.findElement(By.xpath(OR_reader("signup_password"))).sendKeys(td_reader("signup_password",1));
@@ -92,7 +96,7 @@ public class Signup_positive_scenario extends Generic_functions{
 
 	/* TC_004 - Validate that the password should be displayed on an eye click for Password fields*/
 	@When("Clicks on the Eye")
-	public void click_on_show_password() throws Exception {
+	public static void click_on_show_password() throws Exception {
 		try {
 			click("signup_page_back");
 			page_wait(3000);
@@ -100,8 +104,7 @@ public class Signup_positive_scenario extends Generic_functions{
 			driver.findElement(By.xpath(OR_reader("signup_password"))).sendKeys(td_reader("signup_password",1));
 			page_wait(3000);
 			click("signup_show_password");
-			value1=driver.findElement(By.xpath(OR_reader("signup_show_password"))).isSelected();
-			if(value1==false) {
+			if((platformName.equals("iOS"))){
 				click("signup_show_password");
 			}
 			else {
@@ -126,17 +129,18 @@ public class Signup_positive_scenario extends Generic_functions{
 
 	/* TC_005 - Validate the Confirm password field by comparing data entered in the Password field */ 
 	@When("Enter same values of 'Password' in the 'Confirmed Password' field")
-	public void enter_valid_password() throws Exception {
+	public static void enter_valid_password() throws Exception {
 		try {
 			click("signup_page_back");
 			page_wait(3000);
 			click("welcome_signup");
+			value1=driver.findElement(By.xpath(OR_reader("signup_show_confirm_password"))).isDisplayed();
+			Assert.assertEquals(true,value1);
 			driver.findElement(By.xpath(OR_reader("signup_password"))).sendKeys(td_reader("signup_password",1));
 			driver.findElement(By.xpath(OR_reader("signup_confirm_password"))).sendKeys(td_reader("signup_confirm_password",2));
-			value1=driver.findElement(By.xpath(OR_reader( "signup_password"))).isDisplayed();
-			value2=driver.findElement(By.xpath(OR_reader( "signup_confirm_password"))).isDisplayed();
+			page_wait(2000);
+			value1=driver.findElement(By.xpath(OR_reader("signup_confirm_password_tick_icon"))).isDisplayed();
 			Assert.assertEquals(true,value1);
-			Assert.assertEquals(true,value2);
 		} catch (Exception e) {
 			e.printStackTrace();
 			takeScreenShot("signup_positive_enter_valid_password");
@@ -145,7 +149,7 @@ public class Signup_positive_scenario extends Generic_functions{
 
 	/* TC_006 -  Validate user is able to click on Sign Up with valid credentials */
 	@When("Enter valid credentials and apply link should be enabled after adding referral code")
-	public void enter_valid_cred() throws Exception {
+	public static void enter_valid_cred() throws Exception {
 		try {
 			click("signup_page_back");
 			page_wait(3000);
@@ -165,10 +169,9 @@ public class Signup_positive_scenario extends Generic_functions{
 		}
 	}	
 	@Then("After Click on Apply, validation message is displayed")
-	public void verify_OTP_page() throws Exception {
+	public static void verify_OTP_page() throws Exception {
 		try {
-			click("signup_apply_button");
-			click("signup_terms_and_conditions");			
+			click("signup_apply_button");			
 			if((platformName.equals("iOS"))){
 				click("signup_apply_button");
 				click("signup_terms_and_conditions");
@@ -186,13 +189,12 @@ public class Signup_positive_scenario extends Generic_functions{
 
 	/* Tc_007 - Verify the scenario when navigate to the otp Login page */
 	@Given("Click on Resend otp and user will get the validation message")
-	public void enter_otp() throws Exception {
+	public static void enter_otp() throws Exception {
 		try {
 			value1 = driver.findElement(By.xpath(OR_reader("otp_title"))).isDisplayed();
 			Assert.assertEquals(true, value1);
 			click("resend_otp");
 			page_wait(5000);
-			page_wait(3000);
 			value1=driver.findElement(By.xpath(OR_reader("otp_verify"))).isDisplayed();
 			Assert.assertEquals(true,value1);				
 		} catch (Exception e) {
@@ -203,7 +205,7 @@ public class Signup_positive_scenario extends Generic_functions{
 	@When("Enter the four digit verification code")
 	public static void enter_the_four_digit_verification_code() throws Exception {
 		try {
-			page_wait(4000);
+			page_wait(7000);
 			driver.findElement(By.xpath(OR_reader("otp_1"))).sendKeys(td_reader("otp_1"));
 			driver.findElement(By.xpath(OR_reader("otp_2"))).sendKeys(td_reader("otp_2"));
 			driver.findElement(By.xpath(OR_reader("otp_3"))).sendKeys(td_reader("otp_3"));
@@ -213,14 +215,15 @@ public class Signup_positive_scenario extends Generic_functions{
 			takeScreenShot("signup_positive_enter_the_four_digit_verification_code");
 		}		
 	}
-	@Then("Clicks on 'verify' button")
-	public void click_verify() throws Exception, InterruptedException {
+	@Then("Click on verify button")
+	public static void click_verify() throws Exception, InterruptedException {
 		try {
-			page_wait(1500);
-			click("otp_verify");
+			page_wait(5000);
+			click("verify");
 			page_wait(1000);
 			value1=driver.findElement(By.xpath(OR_reader( "welcome_page_title"))).isDisplayed();
 			Assert.assertEquals(true,value1);
+//			close();
 		}catch(Exception e) {
 			e.printStackTrace();
 			takeScreenShot("signup_positive_click_verify");

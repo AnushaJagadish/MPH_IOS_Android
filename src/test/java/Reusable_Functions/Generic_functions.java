@@ -1,9 +1,5 @@
 package Reusable_Functions;
 
-import java.awt.Rectangle;
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,12 +9,14 @@ import java.io.Reader;
 import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import javax.imageio.ImageIO;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -28,20 +26,20 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.IOSMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
 import io.testproject.sdk.drivers.ios.IOSDriver;
 import io.testproject.sdk.internal.exceptions.AgentConnectException;
 import io.testproject.sdk.internal.exceptions.InvalidTokenException;
 import io.testproject.sdk.internal.exceptions.ObsoleteVersionException;
 
 public class Generic_functions {
-	public static XSSFWorkbook workbook;
+	static XSSFWorkbook workbook;
 	public static XSSFSheet sheet;
 	public static XSSFCell cell,f;
 	public static XSSFRow row;
@@ -64,14 +62,12 @@ public class Generic_functions {
 		prop.load(fileInput);
 		platformName=getPlatformName();
 		if (platformName.equals("iOS")) {
-			//driver.launchApp();
 			DesiredCapabilities capabilities = new DesiredCapabilities();
-	        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
-	        capabilities.setCapability(MobileCapabilityType.UDID, get_IOSUDID());
-	        capabilities.setCapability(IOSMobileCapabilityType.BUNDLE_ID, getBundleId());
-	        driver = new IOSDriver<>(getToken(),capabilities,"https://localhost:8585");
-			page_wait(5000);
-			driver.resetApp();
+			capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
+			capabilities.setCapability(MobileCapabilityType.UDID, get_IOSUDID());
+			capabilities.setCapability(IOSMobileCapabilityType.BUNDLE_ID, getBundleId());
+			driver = new IOSDriver<>(getToken(),capabilities,"https://localhost:8585");
+			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		}	
 		else if (platformName.equals("Android")) {
 			DesiredCapabilities cap= new DesiredCapabilities();
@@ -82,9 +78,7 @@ public class Generic_functions {
 			cap.setCapability("appPackage", getAppPackage());
 			cap.setCapability("appActivity", getAppActivity());
 			URL url = new URL(getURL());
-			driver= new AndroidDriver<>(url,cap);
-			page_wait(5000);
-			driver.resetApp();
+			driver= new AndroidDriver<AndroidElement>(url,cap);			
 		}
 	}
 	/* Function will fetch the platform from the config.properties file*/
@@ -96,7 +90,7 @@ public class Generic_functions {
 
 	/* Function will fetch the device name from the config.properties file*/
 	public static String getToken() {
-		 path= prop.getProperty("Token");
+		path= prop.getProperty("Token");
 		if(path!=null) return path ;
 		else throw new RuntimeException ("Token is not specified in the Config.properties");
 	}
@@ -138,14 +132,14 @@ public class Generic_functions {
 		if(dirpath!=null) return dirpath ;
 		else throw new RuntimeException ("user Dir is not specified in the Config.properties");
 	}
-	
+
 	/* Function will fetch the device UDID from the config.properties file*/
 	public static String get_IOSUDID() {
 		String udid= prop.getProperty("UDID");
 		if(udid!=null) return udid ;
 		else throw new RuntimeException ("udid is not specified in the Config.properties");
 	}
-		
+
 	/* Function will fetch the device name from the config.properties file*/
 	public static String getDeviceName() {
 		String deviceName= prop.getProperty("deviceName");
@@ -176,14 +170,14 @@ public class Generic_functions {
 		if(URL!=null) return URL ;
 		else throw new RuntimeException ("URL is not specified in the Config.properties");
 	}
-	
+
 	/* To find object locator value of a particular fieldname passing to this function by loading */
 	public static String OR_reader(String fieldname) throws IOException {	
 		if (platformName.equals("iOS")) {
-			 reader=new BufferedReader(new InputStreamReader(new FileInputStream(getFilepath()),"utf-8"));
+			reader=new BufferedReader(new InputStreamReader(new FileInputStream(getFilepath()),"utf-8"));
 		}
 		else if (platformName.equals("Android")) {
-			 reader=new BufferedReader(new InputStreamReader(new FileInputStream(getAndroidFilepath()),"utf-8"));
+			reader=new BufferedReader(new InputStreamReader(new FileInputStream(getAndroidFilepath()),"utf-8"));
 		}
 		CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
 		for (CSVRecord csvRecord : csvParser) {
@@ -193,7 +187,7 @@ public class Generic_functions {
 			{
 				return val;
 			}
-        }
+		}
 		return null;		
 	}
 	/* Reading Excel file path  from config.properties   */
@@ -214,11 +208,11 @@ public class Generic_functions {
 			{
 				return val;
 			}
-        }
+		}
 		return null;		
 	}
-	
-	
+
+
 	/* To read test data value of a particular fieldname using index  where its values are seperated with a comma within cell in excel sheet  */
 	public static String td_reader(String fieldname,int index) throws IOException {	
 		reader=new BufferedReader(new InputStreamReader(new FileInputStream(getcsv()),"utf-8"));
@@ -231,13 +225,13 @@ public class Generic_functions {
 				String[] values = val.split(",");
 				return values[index];
 			}
-        }
+		}
 		return null;		
 	}
 
 	/* Reading Doctor's report file path  from config.properties   */
 	public static String getcsv() {
-		 path= prop.getProperty("Test_csv");
+		path= prop.getProperty("Test_csv");
 		if(path!=null) return path ;
 		else throw new RuntimeException (" csv path is not specified in the Config.properties");
 	}	
@@ -252,32 +246,34 @@ public class Generic_functions {
 	public static void click(String fieldname) throws IOException {
 		driver.findElement(By.xpath(OR_reader( fieldname))).click();
 	}
-	
+
 	/* To go back to the previous page */
 	public static void page_back(){
 		driver.navigate().back();
 	}
-	
+
 	/*close the application*/
 	public static void close() {
 		driver.closeApp();
 	}
-	
-	 /*  Taking Screenshot of failed test cases  */
+
+	/*  Taking Screenshot of failed test cases  */
 	public static  void takeScreenShot(String fileName) throws Exception {
-		BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-		ImageIO.write(image, "png", new File(getDir()+fileName+".png")); 	
+		TakesScreenshot scrShot =((TakesScreenshot)driver);
+		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+		File DestFile=new File(getDir()+fileName+".png");
+		FileUtils.copyFile(SrcFile, DestFile);
 	}
-		
+
 	/*Function to clear the value in a particular field*/
-	 public static void field_clear(String fieldname) throws IOException {
+	public static void field_clear(String fieldname) throws IOException {
 		mob = driver.findElement(By.xpath(OR_reader( fieldname)));
 		mob.clear();
-		 }
-		
-		/* Function to handling login. variable phonenumber is the test data value number and variable passowrd is the test data password value*/	
-		public static void login(int phonenumber,int password) throws Exception {
-			if (platformName.equals("iOS")) {
+	}
+
+	/* Function to handling login. variable phonenumber is the test data value number and variable passowrd is the test data password value*/	
+	public static void login(int phonenumber,int password) throws Exception {
+		if (platformName.equals("iOS")) {
 			click("welcome_login");
 			click("continue");
 			page_wait(9000);
@@ -296,34 +292,33 @@ public class Generic_functions {
 			click("login");
 			page_wait(9000);
 		}
-}
-		/*Function for explicit wait */
-		public static void page_explicit_wait(String fieldname,int time) throws IOException {
-			//Changed to milliseconds
-			WebDriverWait wait=new WebDriverWait(driver,TimeUnit.MILLISECONDS.toSeconds(time));
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(OR_reader(fieldname))));
-		}
-		
-		/*Function to scroll down until the given the element */
-		public static void scrolldown(String elementchoose) throws Exception {
-			if (platformName.equals("Android")) {	
+	}
+	/*Function for explicit wait */
+	public static void page_explicit_wait(String fieldname,int time) throws IOException {
+		WebDriverWait wait=new WebDriverWait(driver, time);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(OR_reader(fieldname))));
+	}
+
+	/*Function to scroll down until the given the element */
+	public static void scrolldown(String elementchoose) throws Exception {
+		if (platformName.equals("Android")) {	
 			element = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator(
 					"new UiScrollable(new UiSelector().scrollable(true))" +
 							".scrollIntoView(new UiSelector().text(\""+elementchoose+"\"))"));
 			element.click(); }
-			else {
-				click(elementchoose);
-				driver.findElement(By.className(OR_reader("dropdown"))).sendKeys(td_reader(elementchoose));
-				page_wait(2000);
-				click("dropdown_done");
-			}
-			
-			}
-		
-		/* Phone number used for various screens*/
-		public static void phone_number(String OR_phone_number, String sheet_ph_number, int phone_number) throws IOException {
-			driver.findElement(By.xpath(OR_reader(OR_phone_number))).sendKeys(td_reader(sheet_ph_number,phone_number));
+		else {
+			click(elementchoose);
+			driver.findElement(By.className(OR_reader("dropdown"))).sendKeys(td_reader(elementchoose));
+			page_wait(2000);
+			click("dropdown_done");
 		}
-		}
+
+	}
+
+	/* Phone number used for various screens*/
+	public static void phone_number(String OR_phone_number, String sheet_ph_number, int phone_number) throws IOException {
+		driver.findElement(By.xpath(OR_reader(OR_phone_number))).sendKeys(td_reader(sheet_ph_number,phone_number));
+	}
+}
 
 
