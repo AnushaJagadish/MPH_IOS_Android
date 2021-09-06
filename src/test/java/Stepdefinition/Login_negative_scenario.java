@@ -19,7 +19,7 @@ public class Login_negative_scenario extends Generic_functions{
 		page_wait(2000);	
 	}
 	@When("clicks on login button")
-	public static void login() throws Exception {
+	public static void click_login() throws Exception {
 		try {
 			if (platformName.equals("iOS")) {
 				page_wait(2000);
@@ -34,13 +34,13 @@ public class Login_negative_scenario extends Generic_functions{
 			}			
 		} catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("login_positive_login");
+			takeScreenShot("login_negative_click_login");
 		}
 	}
 	
 	/* TC_002 - Validate that the user should get a validation message on entering invalid credentials in the 'Login' Page */
 	@When("enters invalid phone no and password")
-	public static void enters_invalid_phoneno_and_password() throws Exception {
+	public static void enter_invalid_phoneno_and_password() throws Exception {
 		try {
 			page_wait(5000);
 			click("login_phone_number");
@@ -50,7 +50,7 @@ public class Login_negative_scenario extends Generic_functions{
 			click("login");
 		}catch(Exception e) {
 			e.printStackTrace();
-			takeScreenShot("login_negative_enters_invalid_phoneno_and_password");
+			takeScreenShot("login_negative_enter_invalid_phoneno_and_password");
 		}
 	}
 	@Then("validation message is displayed")
@@ -68,7 +68,7 @@ public class Login_negative_scenario extends Generic_functions{
 
 	/*TC_004 - Validate that the user is not allowed to login with invalid 'Phone number' and valid 'Password' */
 	@When("enters invalid phone no and valid password")
-	public static void enters_invalid_phoneno_and_valid_password() throws Exception {
+	public static void enter_invalid_phoneno_valid_password() throws Exception {
 		try {
 			page_wait(3000);
 			click("login_phone_number");
@@ -78,13 +78,13 @@ public class Login_negative_scenario extends Generic_functions{
 			click("login");
 		}catch(Exception e) {
 			e.printStackTrace();
-			takeScreenShot("login_negative_enters_invalid_phoneno_and_valid_password");
+			takeScreenShot("login_negative_enter_invalid_phoneno_valid_password");
 		}
 	}
 
 	/*TC_005 - Validate that the user is not allowed to login with invalid Password and valid phone number */
 	@When("enters invalid password and valid phone no")
-	public static void enters_invalid_password() throws InterruptedException, Exception {
+	public static void enter_invalid_password() throws InterruptedException, Exception {
 		try {
 			page_wait(5000);
 			click("login_phone_number");
@@ -94,9 +94,7 @@ public class Login_negative_scenario extends Generic_functions{
 			click("login");
 		}catch(Exception e) {
 			e.printStackTrace();
-			takeScreenShot("login_negative_enters_invalid_password");
+			takeScreenShot("login_negative_enter_invalid_password");
 		}
 	}
-
-
 }

@@ -12,13 +12,14 @@ public class Signup_negative_scenario extends Generic_functions{
 
 	/* TC_001 -Validate that the user should get a  validation message  on entering invalid 'first name' and 'last name' */
 	@Given("Launch  URL and click on signup")
-	public static void app_launching() throws Exception {
+	public static void launch_app() throws Exception {
 		try {
 			app_launch();
 			page_wait(4000);
 			click("welcome_signup");
 		} catch (Exception e) {
 			e.printStackTrace();
+			takeScreenShot("signup_negative_launch_app");
 		}
 	}	
 	@When("Enter invalid 'Firstname' and 'Lastname' details")
@@ -49,6 +50,7 @@ public class Signup_negative_scenario extends Generic_functions{
 		click("signup_page_back");
 		click("welcome_signup");
 	}
+	
 	/* TC_002 -Validate that the user should get a  validation message  on entering invalid 'Email ID' */
 	@When("Enter invalid 'Email ID'")
 	public static void enter_invalid_email() throws Exception {
@@ -64,13 +66,14 @@ public class Signup_negative_scenario extends Generic_functions{
 			takeScreenShot("signup_negative_enter_invalid_email");
 		}
 	}
+	
 	/* TC_003 -Validate that the user should  get a  validation message on leaving 'Email ID' field  blank*/
 	@When("Enter 'Email ID' as blank")
 	public static void enter_blank_email() throws Exception  {
 		try {
 			click("signup_email_id");
 			click("signup_phone_number");
-			page_wait(3000);
+			page_wait(5000);
 			str = driver.findElement(By.xpath(OR_reader("signup_emailid_blank_valid_msg"))).getText();
 			Assert.assertEquals(str,td_reader("signup_email_blank_msg")); 
 		} catch (Exception e) {
@@ -78,11 +81,11 @@ public class Signup_negative_scenario extends Generic_functions{
 			takeScreenShot("signup_negative_enter_blank_email");
 		}
 	}
+	
 	/* TC_004 - Validate that the user should get a validation message on entering phone number with less than 10 digits in the 'Phone number' field */
 	@When("Enter phone number with less than ten digits")
 	public static void invalid_phone_no() throws Exception {
 		try {
-			page_wait(2000);
 			click("signup_phone_number");
 			page_wait(2000);
 			driver.findElement(By.xpath(OR_reader("signup_phone_number"))).sendKeys(td_reader("signup_phone_number",0));
@@ -95,6 +98,7 @@ public class Signup_negative_scenario extends Generic_functions{
 			takeScreenShot("signup_negative_invalid_phone_no");
 		}
 	}
+	
 	/* TC_005 - Validate that the user should get a validation message on entering phone number with more than 10 digits in the 'Phone number' field */
 	@When("Enter phone number with more than ten digits")
 	public static void enter_invalid_phoneno() throws Exception {
@@ -109,6 +113,7 @@ public class Signup_negative_scenario extends Generic_functions{
 			takeScreenShot("signup_negative_enter_invalid_phoneno");
 		}
 	}
+	
 	/* TC_006 - Validate that the user should get a validation message on entering already registered phone number  */
 	@When("Enter already registered phone number")
 	public static void enter_registered_phoneno() throws Exception {
@@ -134,6 +139,7 @@ public class Signup_negative_scenario extends Generic_functions{
 			takeScreenShot("signup_negative_enter_registered_phoneno");
 		}
 	}
+	
 	/* TC_007 -  Validate that the user should get a validation message  on leaving 'Password' field blank */
 	@When("Enter 'Password' as blank")
 	public static void enter_blank_password() throws Exception  {
@@ -148,6 +154,7 @@ public class Signup_negative_scenario extends Generic_functions{
 			takeScreenShot("signup_negative_enter_blank_password");
 		}
 	}
+	
 	/*TC_008 - Validate that the password strength message  and progress bar is displayed while entering password in 'Password' field   */
 	@When("Enter password")
 	public static void enter_password() throws Exception {
@@ -163,6 +170,7 @@ public class Signup_negative_scenario extends Generic_functions{
 			takeScreenShot("signup_negative_enter_password");
 		}
 	}
+	
 	/*TC_009 -Validate that the user should get a  validation message on entering different data in 'Password' and 'Confirm Password' fields  */
 	@When("Enter password and confirm password data differently")
 	public static void enter_different_password() throws Exception  {
@@ -194,6 +202,7 @@ public class Signup_negative_scenario extends Generic_functions{
 			takeScreenShot("signup_negative_referral_code_blank");
 		}
 	}
+	
 	@Then("Verify that the Apply button is disabled")
 	public static void apply_button_disabled() throws Exception {
 		try {
@@ -217,6 +226,7 @@ public class Signup_negative_scenario extends Generic_functions{
 			page_explicit_wait("signup_referral_code_invalid_msg",5000);
 			str= driver.findElement(By.xpath(OR_reader("signup_referral_code_invalid_msg"))).getText();
 			Assert.assertEquals(str,td_reader("signup_referral_code_invalid_msg"));
+			page_wait(1000);
 		}catch (Exception e) {
 			e.printStackTrace();
 			takeScreenShot("signup_negative_Enter_invalid_referral_code");
@@ -225,14 +235,13 @@ public class Signup_negative_scenario extends Generic_functions{
 
 	/*TC_012 -  Validate that the 'Sign Up' button is disabled  when 'Terms & Conditions' is unchecked   */
 	@When("Check box is unchecked")
-	public static void check_box_unchecked() throws Exception  {
+	public static void checkbox_unchecked() throws Exception  {
 		try {
 			Assert.assertEquals(driver.findElement(By.xpath(OR_reader("signup_terms_and_conditions"))).isSelected(),false);
 			Assert.assertEquals(driver.findElement(By.xpath(OR_reader("signup"))).isEnabled(),true);
-			close();
 		} catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("signup_negative_check_box_unchecked");
+			takeScreenShot("signup_negative_checkbox_unchecked");
 		}		
 	}
 }	

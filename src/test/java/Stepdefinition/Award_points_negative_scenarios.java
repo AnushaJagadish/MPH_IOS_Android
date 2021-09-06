@@ -28,14 +28,13 @@ public class Award_points_negative_scenarios extends Generic_functions{
 			page_wait(7000);
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_negative_tc_001");
+			takeScreenShot("Award_point_negative_launchTheURL");
 		}	
 	}
 	@When("Navigated to home page")
 	public static void Award_points_negative_tc_001() throws Exception {
 		try {
-			page_wait(10000);
-			page_explicit_wait("home",6000);
+			page_explicit_wait("home",20000);
 			value = driver.findElement(By.xpath(OR_reader("home"))).isDisplayed();
 			Assert.assertEquals(true, value);
 			click("home");
@@ -54,7 +53,7 @@ public class Award_points_negative_scenarios extends Generic_functions{
 			click("utilities_awardpoints");
 		} catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_negative_tc_001");
+			takeScreenShot("Award_point_negative_click_utilities");
 		}
 	}
 
@@ -65,7 +64,7 @@ public class Award_points_negative_scenarios extends Generic_functions{
 			Assert.assertEquals(true,value);
 		} catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_negative_tc_001");
+			takeScreenShot("Award_point_negative_click_award_points");
 		}
 	}
 
@@ -77,7 +76,7 @@ public class Award_points_negative_scenarios extends Generic_functions{
 			click("awardpoints_redeeem_points_button");
 		} catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_negative_tc_002");
+			takeScreenShot("Award_point_negative_click_redeem_points");
 		}
 	}
 	@When("Enter the amount more than available amount")
@@ -103,19 +102,19 @@ public class Award_points_negative_scenarios extends Generic_functions{
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_negative_tc_002");
+			takeScreenShot("Award_point_negative_greater_amount");
 		}
 	}
 
 	@Then("Validate the message on award points page")
-	public static void Award_point_negative() throws Exception {
+	public static void validate_message_award_point() throws Exception {
 		try{
 			page_wait(3000);
 			str= driver.findElement(By.xpath(OR_reader("redeempoints_amount_invalid_msg"))).getText();
 			Assert.assertEquals(str,td_reader("redeempoints_amount_exceed_invalid_msg"));
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_negative_tc_002");
+			takeScreenShot("Award_point_negative_validate_message_award_point");
 		}
 	}
 
@@ -131,19 +130,19 @@ public class Award_points_negative_scenarios extends Generic_functions{
 			click("redeem_points_emailid");
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_negative_tc_003");
+			takeScreenShot("Award_point_negative_lesser_Amount");
 		}
 	}
 
 	@Then("Validate the message on award points page on less amount")
-	public static void Award_point_negative_tc_002() throws Exception {
+	public static void less_amount_award_point_message() throws Exception {
 		try {
 			str= driver.findElement(By.xpath(OR_reader("redeempoints_amount_invalid_msg"))).getText();
 			Assert.assertEquals(str,td_reader("redeempoints_amount_less_invalid_msg"));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_negative_tc_003");
+			takeScreenShot("Award_point_negative_less_amount_award_point_message");
 		}
 	}
 
@@ -160,18 +159,18 @@ public class Award_points_negative_scenarios extends Generic_functions{
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_negative_tc_004");
+			takeScreenShot("Award_point_negative_redeemButton_giftcardblank");
 		}
 	}
 	@Then("Validate the error message displayed")
-	public static void Award_point_negative_tc_003() throws Exception, InterruptedException {
+	public static void error_message_validation() throws Exception, InterruptedException {
 		try {
 //			value=driver.findElement(By.xpath(OR_reader( "redeem_points"))).isEnabled();
 //			Assert.assertEquals(value,false);
 //			page_wait(1000);
 		}catch(Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_negative_tc_004");
+			takeScreenShot("Award_point_negative_error_message_validation");
 		}
 	}
 
@@ -187,12 +186,12 @@ public class Award_points_negative_scenarios extends Generic_functions{
 //			Assert.assertEquals(value,true);
 		}catch(Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_negative_tc_005");
+			takeScreenShot("Award_point_negative_blank_amount_redeem_butto");
 		}
 	}
 
 	@Then("Validate the message displayed")
-	public static void Award_point_negative_tc_004() throws Exception {
+	public static void validate_message() throws Exception {
 		try{
 //			click("redeem_points_giftcard");
 //			text = td_reader("redeem_points_giftcard");
@@ -200,13 +199,13 @@ public class Award_points_negative_scenarios extends Generic_functions{
 //			value=driver.findElement(By.xpath(OR_reader("redeem_points"))).isEnabled();
 //			Assert.assertEquals(value,true);
 //			click("home");
-//			page_wait(5);
+//			page_wait(5000);
 //			click("hamburger");
 //			click("logout");
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_negative_tc_005");
+			takeScreenShot("Award_point_negative_validate_message");
 		}
 		close();
 	}

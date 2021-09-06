@@ -18,43 +18,44 @@ public class Utilities_positive_scenarios extends Generic_functions {
 			app_launch();
 			page_wait(2000);
 			login(0,0);
-			page_wait(6000);
+			page_explicit_wait("home",15000);
 		} catch (Exception e) {
 			e.printStackTrace();
+			takeScreenShot("utilities_positive_launch_url");
 		} 
 	}
+	
 	@When("clicks on Utilities tab")
 	public static void click_utilities() throws Exception {
 		try {
-			page_wait(9000);
-			page_explicit_wait("home",6000);
 			value = driver.findElement(By.xpath(OR_reader("home"))).isDisplayed();
 			Assert.assertEquals(true, value);
 			click("home");
 			page_wait(3000);
-			click("utilities");				
+			click("utilities");		
+			page_wait(2000);
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("utilities_positive_tc_001");
+			takeScreenShot("utilities_positive_click_utilities");
 		}	
 	}
+	
 	@Then("Navigate to Utilities Dashboard")
-	public static void utilities_positive_tc_001() throws Exception {
+	public static void navigate_utilities_dashboard() throws Exception {
 		try {
-			page_wait(2000);
 			value = driver.findElement(By.xpath(OR_reader("utilities_wallet"))).isDisplayed();
-			Assert.assertEquals(true, value);			
+			Assert.assertEquals(true, value);	
+			page_wait(5000);
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("utilities_positive_tc_001");
+			takeScreenShot("utilities_positive_navigate_utilities_dashboard");
 		}	
 	}
 
 	/* TC_002 - Verify that click on all the Tiles in the Utilities dashboard*/
 	@When("Click all tiles in utilities dashboard")
-	public static void utilities_positive_tc_003() throws Exception {
+	public static void click_all_utilities_tile() throws Exception {
 		try {
-			page_wait(5000);
 			click("utilities_wallet");
 			page_wait(6000);
 			value = driver.findElement(By.xpath(OR_reader("utilities_add_payment_button"))).isDisplayed();
@@ -67,11 +68,11 @@ public class Utilities_positive_scenarios extends Generic_functions {
 			click("utilities_back");			 
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("utilities_positive_tc_003");
+			takeScreenShot("utilities_positive_click_all_utilities_tile");
 		}	
 	}
 	@Then("verify navigation to the pages")
-	public static void navigation_to_pages() throws Exception {
+	public static void navigate_pages() throws Exception {
 		try {
 			click("utilities_idcard");
 			page_wait(3000);
@@ -93,22 +94,22 @@ public class Utilities_positive_scenarios extends Generic_functions {
 			Assert.assertEquals(true,value);
 			page_wait(3000);
 			click("utilities_ok_button");
+			page_wait(3000);
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("utilities_positive_tc_003");
+			takeScreenShot("utilities_positive_navigate_pages");
 		}	
 	}
 
 	/* TC_004 - Add card details  in the Wallet dashboard*/
 	@Given("user is on wallet page")
-	public static void user_on_wallet_page() throws Exception {
+	public static void click_wallet() throws Exception {
 		page_wait(3000);
 		click("utilities_wallet");	 
 	}
 	@When("Enter card details in wallet dashboard")
-	public static void utilities_positive_tc_004() throws Exception {
+	public static void enter_card_details() throws Exception {
 		try {
-			page_wait(3000);
 			click("utilities_add_payment_button");
 			page_wait(1000);
 			click("utilities_add_debit_credit_card");
@@ -137,15 +138,15 @@ public class Utilities_positive_scenarios extends Generic_functions {
 			}
 			page_wait(3000);
 			driver.findElement(By.xpath(OR_reader("utilities_card_city"))).sendKeys(td_reader("utilities_card_city",0));
+			page_wait(2000);
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("utilities_positive_tc_004");
+			takeScreenShot("utilities_positive_enter_card_details");
 		}	
 	}
 	@Then("Verify card details is saved")
 	public static void card_details_save() throws Exception {
 		try {
-			page_wait(2000);
 			click("utilities_card_save");
 			if((platformName.equals("iOS"))){	
 				click("utilities_card_save");
@@ -155,29 +156,30 @@ public class Utilities_positive_scenarios extends Generic_functions {
 			page_wait(9000);
 			value = driver.findElement(By.xpath(OR_reader("utilities_card_title"))).isDisplayed();
 			Assert.assertEquals(true,value);
+			page_wait(4000);
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("utilities_positive_tc_004");
+			takeScreenShot("utilities_positive_card_details_save");
 		}
 	}
 
 	/* TC_005 - Add bank details  in the Wallet dashboard*/
 	@Given("user is on add bank details page")
-	public static void on_add_bank_details() throws Exception {
+	public static void add_bank_details() throws Exception {
 		try {
-			page_wait(4000);
 			click("utilities_plus_icon");
 			page_wait(3000);
 			click("utilities_add_bank");
+			page_wait(2000);
 		} catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("utilities_positive_tc_004");
+			takeScreenShot("utilities_positive_add_bank_details");
 		}
 	}
+	
 	@When("Enter bank details in wallet dashboard")
 	public static void bank_details() throws Exception {
 		try {	
-			page_wait(2000);
 			value = driver.findElement(By.xpath(OR_reader("utilities_add_bank_title"))).isDisplayed();
 			Assert.assertEquals(true,value);
 			page_wait(1000);
@@ -207,13 +209,13 @@ public class Utilities_positive_scenarios extends Generic_functions {
 			page_wait(4000);
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("utilities_positive_tc_005");
+			takeScreenShot("utilities_positive_bank_details");
 		}
 	}
 
-	//TC_004 - Check deactivate tab 
+	//TC_005 - Check deactivate tab 
 	@Given("user is on settings page")
-	public static void user_on_settings_page() {
+	public static void settings_page() throws Exception {
 		try {
 			if((platformName.equals("Android"))){			
 				click("utilities");
@@ -224,10 +226,12 @@ public class Utilities_positive_scenarios extends Generic_functions {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			takeScreenShot("utilities_positive_settings_page");
 		}			
 	}
+	
 	@Then("User should able to click on Deactivate tile")
-	public static void utilities_positive_tc_005() throws Exception {
+	public static void click_deactivate_tile() throws Exception {
 		try {	
 			if((platformName.equals("Android"))){
 				page_wait(1000);
@@ -245,7 +249,7 @@ public class Utilities_positive_scenarios extends Generic_functions {
 			close();
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("utilities_positive_tc_005");
+			takeScreenShot("utilities_positive_click_deactivate_tile");
 		}	
 	}
 }
