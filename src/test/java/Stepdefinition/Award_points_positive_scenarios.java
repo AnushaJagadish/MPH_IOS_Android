@@ -29,11 +29,11 @@ public class Award_points_positive_scenarios extends Generic_functions{
 			e.printStackTrace();
 		} 
 	}
+	
 	@When("Click on 'Utilities'")
 	public static void click_utilities_tab() throws Exception {
 		try {
-			page_wait(10000);
-			page_explicit_wait("home",6000);
+			page_explicit_wait("home",20000);
 			value = driver.findElement(By.xpath(OR_reader("home"))).isDisplayed();
 			Assert.assertEquals(true, value);
 			click("home");
@@ -41,18 +41,19 @@ public class Award_points_positive_scenarios extends Generic_functions{
 			click("utilities");				
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("utilities_positive_tc_001");
+			takeScreenShot("utilities_positive_click_utilities_tab");
 		}	
 	}
+	
 	@Then("Verify award points tab is available")
-	public static void click_utilities() throws Exception {
+	public static void verify_award_point_tab() throws Exception {
 		try {
 			page_wait(3000);
 			value = driver.findElement(By.xpath(OR_reader("utilities_awardpoints"))).isDisplayed();
 			Assert.assertEquals(true, value);
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_positive_tc_001");
+			takeScreenShot("Award_point_positive_verify_award_point_page");
 		}
 	}
 
@@ -64,18 +65,18 @@ public class Award_points_positive_scenarios extends Generic_functions{
 			click("utilities_awardpoints");
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_positive_tc_002");
+			takeScreenShot("Award_point_positive_click_awardpoints");
 		}		
 	}
 
 	@Then("Validate Award points page")
-	public static void Award_point_positive_tc_001() throws Exception {
+	public static void validate_award_points_page() throws Exception {
 		try {
 			value = driver.findElement(By.xpath(OR_reader("utilities_awardpoints_title"))).isDisplayed();
 			Assert.assertEquals(true,value);
 		} catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_positive_tc_002");
+			takeScreenShot("Award_point_positive_validate_award_points_page");
 		}
 	}
 
@@ -91,9 +92,10 @@ public class Award_points_positive_scenarios extends Generic_functions{
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_positive_tc_003");
+			takeScreenShot("Award_point_positive_click_redeem_points_button");
 		}
 	}
+	
 	@When("Enter giftcard and amount to redeem")
 	public static void enter_value() throws Exception {
 		try {
@@ -111,17 +113,19 @@ public class Award_points_positive_scenarios extends Generic_functions{
 			click("redeem_points_emailid");
 		} catch (Exception e) {
 			e.printStackTrace();
+			takeScreenShot("Award_point_positive_enter_value");
 		}	
 	}
+	
 	@Then("Validate user is able to redeem points")
-	public static void validateTheRedeemAwardPointsPage() throws Exception {
+	public static void validate_redeem_awar_points_page() throws Exception {
 		try {
 			//			page_wait(3000);			
 			//		click("redeem_points_button");
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_positive_tc_003");
+			takeScreenShot("Award_point_positive_validate_redeem_awar_points_page");
 		}
 	}
 
@@ -135,11 +139,11 @@ public class Award_points_positive_scenarios extends Generic_functions{
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_positive_tc_004");
+			takeScreenShot("Award_point_positive_navigate_redeem_page");
 		}
 	}
 	@Then("Validate the redeemed page")
-	public static void Award_point_positive_tc_004() throws Exception {
+	public static void validate_redeemed_page() throws Exception {
 		try {
 			//			click("redeem_points_goto_awardpoints_buton");
 			//			page_wait(9000);
@@ -152,7 +156,7 @@ public class Award_points_positive_scenarios extends Generic_functions{
 
 		}catch (Exception e) {
 			e.printStackTrace();
-			takeScreenShot("Award_point_positive_tc_004");
+			takeScreenShot("Award_point_positive_validate_redeemed_page");
 		}
 	}
 }

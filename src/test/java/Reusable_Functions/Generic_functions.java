@@ -21,6 +21,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -49,7 +50,7 @@ public class Generic_functions {
 	public static WebElement mob;
 	static File file = new File("config/config.properties");
 	static Properties prop = new Properties();
-	public static String platformName;
+	public static String platformName,ere,text;
 	public static AppiumDriver driver;
 	public static Reader reader;
 	public static MobileElement element;
@@ -286,7 +287,7 @@ public class Generic_functions {
 		}
 		else  {		
 			click("welcome_login");			
-			page_wait(9000);
+			page_wait(20000);
 			driver.findElement(By.xpath(OR_reader("login_phone_number"))).sendKeys(td_reader("login_phone_number",phonenumber));
 			driver.findElement(By.xpath(OR_reader("login_password"))).sendKeys(td_reader("login_password",password));
 			click("login");
@@ -319,6 +320,50 @@ public class Generic_functions {
 	public static void phone_number(String OR_phone_number, String sheet_ph_number, int phone_number) throws IOException {
 		driver.findElement(By.xpath(OR_reader(OR_phone_number))).sendKeys(td_reader(sheet_ph_number,phone_number));
 	}
+
+	/* Grid tile for home*/
+	public static void grid_tile() throws IOException {
+		ere= driver.findElement(By.xpath(OR_reader("title"))).getText();
+		if(ere.equalsIgnoreCase("Manage payments")) {
+			text= driver.findElement(By.xpath(OR_reader("wallet_title"))).getText();
+			Assert.assertEquals(text,td_reader("wallet_title"));	
+			page_wait(2000);
+			click("home");
+		}else if(ere.equalsIgnoreCase("Claims")) {
+			text= driver.findElement(By.xpath(OR_reader("claims_title"))).getText();
+			Assert.assertEquals(text,td_reader("claims_title"));	
+			page_wait(2000);
+			click("home");
+		}
+		else if(ere.equalsIgnoreCase("Bills")) {
+			text= driver.findElement(By.xpath(OR_reader("bills_tilte"))).getText();
+			Assert.assertEquals(text,td_reader("bills_tilte"));	
+			page_wait(2000);
+			click("home");
+		} else if(ere.equalsIgnoreCase("Second opinions")) {
+			text= driver.findElement(By.xpath(OR_reader("request_second_opinion_title"))).getText();
+			Assert.assertEquals(text,td_reader("request_second_opinion_title"));	
+			page_wait(2000);
+			click("home");
+		}else if(ere.equalsIgnoreCase("Award points")) {
+			text= driver.findElement(By.xpath(OR_reader("awardpoints_title"))).getText();
+			Assert.assertEquals(text,td_reader("awardpoints_title"));	
+			page_wait(2000);
+			click("home");
+		}else {
+			//			text= driver.findElement(By.xpath(OR_reader(""))).getText();
+			//			Assert.assertEquals(text,td_reader(""));	
+			page_wait(2000);
+			click("home");
+		}
+	}
+
+	/*Stale object element click*/	
+	public static void stale_click(String fieldname) throws Exception {			 
+		WebDriverWait wait = new WebDriverWait(driver, 2000);			
+		wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(By.xpath(OR_reader(fieldname)))));
+		driver.findElement(By.xpath(OR_reader(fieldname))).click();
+	} 
 }
 
 

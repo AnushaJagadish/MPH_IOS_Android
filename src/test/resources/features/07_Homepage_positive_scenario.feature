@@ -1,13 +1,10 @@
 Feature: Validation on Home Page
   #User must click on the login and nagivated to home page
-  Scenario: Validate that the user is navigated to Welcome page
-    Given Welcome page is available
-    When Click on 'Welcome Login' button
-    Then Verify the Welcome page
     
   Scenario: Validate that the user is able to Login with valid data
-    When User enters valid phonenumber and password
-    Then click on 'login' button
+  	Given Launch the app
+    When Enter valid phonenumber, password and cliks on login button
+    Then validate homepage
     
   Scenario: Validate that the user is in Home page
     When clicks on all the grid tiles

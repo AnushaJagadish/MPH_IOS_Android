@@ -5,7 +5,7 @@ signup_page_title,Sign Up Now.
 signup_first_name,"#2323##$$ ,Arnav ,Meenu"
 signup_last_name,"23##re,A,S"
 signup_email_id,"Testempgmail.com,Aarav123@mail.com,Meenu@gmail.com"
-signup_phone_number,"222555 ,22255523234578 ,1231231234,3332200114"
+signup_phone_number,"222555 ,22255523234578 ,1231231234,3332200127"
 signup_password,"Welcome@1,Aarav@97"
 signup_confirm_password,"Welcome@,Welcome@1,Aarav@97"
 signup_firstname_valid_msg,Invalid first name
@@ -25,6 +25,7 @@ otp_1,1
 otp_2,2
 otp_3,3
 otp_4,4
+otp_page_title,Enter code
 login_phone_number,"1231231234, 1232222222, 33355567898, 1222222227"
 login_password,"Test1234$,Welcome@1,sdrfhh"
 login_invalid_msg,"Invalid username or password, please try again."
@@ -36,7 +37,19 @@ header_contactus_feedback,Testing
 header_feedback_your_feedback,Test Feedback
 header_feedback_more_detail,Test add more details
 header_feedback_email,test@mail.com
-header_contactus_feedback,
+header_profile_title,Your profile
+header_rating_title,Your ratings
+header_alert_title,Your alerts
+header_FAQ_title,FAQ
+header_contact_title,Mpowered Health
+header_privacy_policy_title,Privacy Policy
+header_terms_condition_title,Terms & Conditions
+wallet_title,Manage payments
+claims_title,Claims
+bills_tilte,Bills
+request_second_opinion_title,Second opinions
+awardpoints_title,Award points
+refer_a_friend_title,Refer a friend
 utilities_card_saveas,Card details
 utilities_card_name,John
 utilities_card_number,"4242424242424242, 1234"
